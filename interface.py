@@ -21,12 +21,12 @@ INFOBLOKJE = \
 |  Jaar van aankomst: 2018                                          |
 |  Studierichting: Natuurkunde                                      |
 +-------------------------------------------------------------------+
-|Opgave: Biljard                                                     |
+|Opgave: Biljard                                                    |
 +-------------------------------------------------------------------+
 |Inleverdatum: 30-11-2018                                           |
 +-------------------------------------------------------------------+
 |Instructie voor gebruiker:                                         |
-|    Er wordt gevraagd wat het aantal stappen voor de simulatie is   |
+|    Er wordt gevraagd wat het aantal stappen voor de simulatie is  |
 |    en er wordt gevraagd wat het pad van het bestand is voor de    |
 |   bestand waar de positie en richtingsvectoren uit worden gelezen |
 |                                                                   |
