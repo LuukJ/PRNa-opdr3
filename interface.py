@@ -4,7 +4,7 @@ balpos = []
 bal_v = []
 tab_width = 2.84
 tab_height = 1.42
-aantal_ballen = 1
+aantal_ballen = 2
 
 
 INFOBLOKJE = \
@@ -43,16 +43,34 @@ print(INFOBLOKJE)
 
 def balinvoer():
     print("De dementies van de tafel zijn", tab_width,"meter breed en ", tab_height, "meter hoog.")
-    balpos_x = float(input("Geef de x-coordinaat van de bal"))
-    balpos_y = float(input("Geef de y-coordinaat van de bal"))
-    bal_ms = float(input("Geef de snelheid van de bal in m/s"))
-    bal_ang= np.deg2rad(int(input("Geef de hoek van de bal in graden")))
+
+
+    """
+    de volgende code gebruikt de try-exept syntax om de aard van de invoer te bepalen door middel van valueerrors. Deze 
+    errors zijn een goede indicatie en bewijs dat er een getal is ingevoerd en geen letter is. 
+    """
+    balpos_check = False
+    while not balpos_check:
+        try:
+            balpos_x = float(input("Geef de x-coordinaat van de bal"))
+            balpos_y = float(input("Geef de y-coordinaat van de bal"))
+            bal_ms = float(input("Geef de snelheid van de bal in m/s"))
+            bal_ang = np.deg2rad(int(input("Geef de hoek van de bal in graden")))
+            balpos_check = True
+        except ValueError:
+            print("Bij een van de 2 velden is geen geldig getal ingevuld. Probeer het opniew")
+
+    """Deze variablene zetten de invoer van de hoek en snelheid om naar 2 sneheidsvectoren en voegen deze toe aan de 
+    snelheidsarray (bal_v)
+    """
     bal_v_y = np.sin(bal_ang) * bal_ms
     bal_v_x = np.cos(bal_ang) * bal_ms
     balpos.append(([balpos_x, balpos_y]))
     bal_v.append(([bal_v_x, bal_v_y]))
 
 
+
+""""de volgende fucntie is het startupscript dat de operatie van de rest van het """
 def initalisatie():
     modus = "x"
     while modus not in ("012"):
@@ -66,7 +84,18 @@ def initalisatie():
             stapcheck = True
         except ValueError:
             print("Dit is geen geldige input vul een geldige gehele waarde in.")
+    """
+    #uncomment deze code voor een zelfgespecificeerd aantal ballen
 
+    balfreq_check = False
+    while not balfreq_check:
+        try:
+            aantal_ballen = int(input("Gewenst aantal ballen:"))
+
+            balfreq_check = True
+        except ValueError:
+            print("Dit is geen geldige input vul een geldige gehele waarde in.")
+    """
     if modus == "0":
 
         filecheck = False
@@ -99,8 +128,6 @@ def initalisatie():
 
     elif modus == "2":
         sys.exit()
-
-
 
 
 ### deze functie handeld het automatische deel van de code waarij de positie en richtingsvectoren worden uitgelezen uit
