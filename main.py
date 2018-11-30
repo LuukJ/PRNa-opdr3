@@ -76,7 +76,7 @@ def automatisch():
             break
         except OSError:
             print("Bestand bestaat niet.")
-        except AsserionError:
+        except AssertionError:
             print("Het bestand bevat een ongeldige positie.")
     pos0, v0 = vraag_bal(tafel)
     uitvoernaam = input("PDF opslaan als: ")
