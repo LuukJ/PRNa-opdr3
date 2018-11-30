@@ -33,19 +33,19 @@
 \maketitle
 
 \section{Introduction}
-    Deze opdracht was nogal drastisch anders dan de voorgaande. Het werd ons bij de eerste analyse van de opdracht al meteen duidelijk dat de opdracht de focus probeerde te leggen op het implementeren en gebruiken van classes. Gelukkig hebben we beide al enige ervaring met class achtige elementen uit andere object georienteerde programmeertalen en was het concept voor ons niet vreemd. 
+    Deze opdracht was nogal drastisch anders dan de voorgaande. Het werd ons bij de eerste analyse van de opdracht al meteen duidelijk dat de opdracht de focus probeerde te leggen op het implementeren en gebruiken van classes. Gelukkig hebben we beide al enige ervaring met class achtige elementen uit andere object georienteerde programmeertalen en was het concept voor ons niet vreemd. Enige discussie was al duidleijk over onze gezamelijke aanpak van deze opdracht. 
     
 \section{Code}
-\subsection{Interface}
-De gebruikers interface waar de gebruiker als eerst mee geconfronteerd word moest makkelijk en duidelijk in gebruik zijn met zo min mogelijk interactie en zo veel mogelijk resultaat. De wijze waarop dit moest gebeuren was zeer duidelijk gemaakt in de opdracht en was daarom ook niet heel moeilijk om te implementeren. Bij deze interface kwamen veel elementen terug uit vorige opdrachten en konden dus simpel met elkaar geintegreerd worden en aangepast worden aan dit programma. \newline Tot de huidige versie is er maar een enkel probleem dat zich optreed wanneer de handmatige invoer word verwerkt. Dit probleem komt naar voren wanneer er waardes voor de x worden ingevoerd die niet op het tafelvlak bevinden. Hier zijn overduidelijke oplossingen voor maar voor functionele doeleidnen hebben wij op het moment dit probleem opgelost door gebruik te maken van de modulus over de inputwaarde. Hierdoor krijgen we altijd een waarde binnen de dementies van de tafel. \newline De automatische invoer is compleet gebouwd op de numpy functie np.loadtxt. Deze functie is perfect voor het omzetten van text in een array. Wanneer dit is gebeurd is het maar een kwestie van de juiste waarde uit de array op de goede plek in de 2 dementionale positie array te zetten en dat was het.
+\subsection{Interface} 
+De gebruikers interface waar de gebruiker als eerst mee geconfronteerd word moest makkelijk en duidelijk in gebruik zijn met zo min mogelijk interactie en zo veel mogelijk resultaat. De wijze waarop dit moest gebeuren was zeer duidelijk gemaakt in de opdracht en was daarom ook niet heel moeilijk om te implementeren. Bij deze interface kwamen veel elementen terug uit vorige opdrachten en konden dus simpel met elkaar geintegreerd worden en aangepast worden aan dit programma. \newline De automatische invoer is compleet gebouwd op de numpy functie np.loadtxt. Deze functie is perfect voor het omzetten van text in een array. Wanneer dit is gebeurd is het maar een kwestie van de juiste waarde uit de array op de goede plek in de 2 dementionale positie array te zetten en dat was het.
 \subsection{Plotting}
 \subsubsection{(v,t)plot}
-Het v,t plot is misschien nog wel het meest invoudige gedeelte van dit project. Omdat de snelheidsvectors opgeslagen staan in een chronologische lijst is het heel makkelijk om met pyplot gewoon de 1-dementionale snelheid van elke vector te plotten. Dit was ook de laatste implementatie die wij hebben gemaakt aan het programma. 
+Het v,t plot is misschien nog wel het meest invoudige gedeelte van dit project. Omdat de snelheidsvectors opgeslagen staan in een chronologische lijst is het heel makkelijk om met pyplot gewoon de 1-dementionale snelheid van elke vector te plotten. Dit was ook de laatste implementatie die wij hebben gemaakt aan het programma. De werking van dit stukje werkt als volgt. De code vraagt aan de balclasses van beide ballen de snelheid van de ballen op en plot deze snelheden in hun eigen grafiek met as-opmaak.  
 \subsubsection{Billiardplot}
 
 \subsubsection{ASCII-Plot}
 Het ASCII-Plot was bij de eerste gedachte een fluitje van een cent. Maar bij het verder lezen moest ook dit stuk van de code volgens een bepaalde manier gecodeerd worden. Hierbij moest een onbekende numpy functie gevonden worden die gebruikt moest worden om de 2 dementionale array/lijst om te zetten naar een genormaliseerde versie hiervan. Het vinden van deze functie bleek nog een groter opgeve dan gedacht. Vandaar dat het even duurde voor deze was geimplementeerd. 
-De algemene opstelling van de ascii-plot code is als volgt. De code genereerd een 1 dementionale lijst met een | gevolgd door 70 spaties en vervolgens ee | en  een "\n". Door de x en de y coordinaten door een formule te halen komen we erachter welk element van de lijst we moeten vervangen door een x of een o. Dit resulteerd in een grafiek als volgt. 
+De algemene opstelling van het ASCII-plot is als volgt. De posities van de ballen worden genormaliseerd en er word een 70 bij 18 zero array aangemaakt waarin op de balcoordinaten het element word verhoogd met 1 of 2 afhankelijk van de bal. In deze 2 dementionale array worden de elementen met 1 vervangen door een "o" en worden de elementen met 2 vervangen door "x" en die met 3 worden vervangen door een plus. Deze array word samengevoegd en alle 0 posities worden vervangen door een spatie. Dit geeft resultaten zoals hieronder weergegeven. Dit komt nauw overeen met de verwachtingsgrafiek daaronder. 
 
 
 \begin{figure}
@@ -76,7 +76,7 @@ De algemene opstelling van de ascii-plot code is als volgt. De code genereerd ee
 \end{figure}
 \begin{figure}
   \includegraphics[width=\linewidth]{sampleplot.jpg}
-  \caption{Reference correct plot}
+  \caption{Correct referentieplot}
   \label{fig:exampleplot}
 \end{figure}
 \newpage
@@ -89,9 +89,9 @@ Zoals we kunnen zien komt de grafiek 1 op 1 overeen met de verwachtte grafiek. D
    & Luuk & Levi \\
   \hline
   Week 1 & Begonnen aan de implementatie van de classes en de muurdetectie per bal &  Begonnen aan de implementatie van de classes en de muurdetectie per bal \\
-  Week 2 & Een begin maken aan Decodeerfunctie en ideen opdoen voor palindroomuitwerking & Begin maken aan user interface en zijn subsystemen(automatisch, handmatig) \\
-  Week 3 & -Ideeen opdoen voor verdere decodeeroptimalisatie en aanpassingen maken aan de decodeerfunctie om de code zo efficient en klein mogelijk te maken.\linebreak -Integratie van palindroomfunctie in de decodeerfunctie & -Integratie invoersubsystemen in de userinterface en uitvoer formatting naar het juiste formaat voor de rest van de code  \\
-  Week 4  & Debuggen van speciale gevallen bij het en- en decoderen. Implementeren van het compressieratio & Ontwikkelen en implementeren van ASCII-grafiek.   \\
+  Week 2 & Verdere optimalisatie muurdetectie en begin maken aan fysica implementatie voor de weerstand en verdere rolfysica & -Begin maken aan user interface en zijn subsystemen(automatisch, handmatig) \\
+  Week 3 & -Aestethica plot verbeteren en namaken na specificatie van de opdracht.\linebreak -Collisie detectie tussen n aantal ballen implementeren , testen en debuggen. & -Integratie invoersubsystemen in de userinterface en uitvoer formatting naar het juiste formaat voor de rest van de code  \\
+  Week 4  & Samenvoegen van de interface, billiard en plot componenten in 1 uniforme functie. \linebreak Laatste testsituaties lopen \linebreak - interface optimaliseren na specificaties & Ontwikkelen en implementeren van ASCII-grafiek. \linebreak - Verslag schrijven   \\
  
  
  
