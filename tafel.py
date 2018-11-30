@@ -54,7 +54,7 @@ class Tafel:
         """
         collisions = []
         for other in self.balls:
-            if other == ball:
+            if other == ball or other.in_gat:
                 continue
             p1, p2 = ball.pos[i], other.pos[i]
             v1, v2 = ball.v[i], other.v[i]
