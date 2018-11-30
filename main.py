@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+from matplotlib.backends.backend_pdf import PdfPages
 from tafel import Tafel
 from plot_tafel import plot_tafel
 from plot_snelheid import plot_snelheid
@@ -59,22 +60,41 @@ def automatisch():
             break
         except ValueError:
             print("Voer natuurlijk getal in.")
-    tafel = Tafel((2.84,1.42), N, 0.05)
+    
+    tafel = Tafel((2.84, 1.42), N, 0.05)
     while 1:
         try:
             filename = input("Invoerbestand: ")
-            data = np.loadtxt(filename)
-            pos = data[:,:2]
-            v = data[:,2:]
-            assert np.all(0.03075 < pos < tafel.dim-0.03075)
+            data = np.loadtxt(filename, delimiter=' ')
+            if len(data.shape) == 1:  # als het slechts een regel heeft
+                print("EEN")
+                data = data.reshape((1,data.shape[0]))
+            pos1 = data[:,:2]
+            v1 = data[:,2:]
+            assert (pos1 > 0.03075).all() and \
+                    (pos1 < np.array(tafel.dim) - 0.03075).all()
             break
-        except FileNotFoundError:
-            print("Bestand bestaat niet")
-
-
-
-
-
+        except OSError:
+            print("Bestand bestaat niet.")
+        except AsserionError:
+            print("Het bestand bevat een ongeldige positie.")
+    pos0, v0 = vraag_bal(tafel)
+    uitvoernaam = input("PDF opslaan als: ")
+    pdf = PdfPages(uitvoernaam)
+    plottype = keuze("Selecteer een plot-type:",
+            "Baltrajecten", "Balsnelheden")
+    for i in range(len(data)):
+        tafel.clear()
+        tafel.register_ball(pos0, v0, (0, 0.5, 0, 1))
+        tafel.register_ball(pos1[i], v1[i], (0, 0, 1, 1))
+        tafel.simulate()
+        if plottype == 1:
+            fig, ax = plot_tafel(tafel)
+        else:
+            fig, ax = plot_snelheid(tafel)
+        pdf.savefig(fig)
+        plt.close(fig)
+    pdf.close()
 
 
 def vraag_bal(tafel):
