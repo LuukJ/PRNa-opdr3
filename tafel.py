@@ -47,6 +47,7 @@ class Tafel:
         detecteer botsingen tussen ballen en pas de snelheden dezer ballen aan.
         retourneert ook een list met botspunten teneinde het tekenen
         van kruisjes op botspunten.
+        Kan bij heel lage snelheden misgaan
         """
         collisions = []
         for other in self.balls:
