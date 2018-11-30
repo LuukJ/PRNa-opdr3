@@ -3,7 +3,7 @@ from bal import *
 
 
 class Tafel:
-    def __init__(self, dim, N, dt):  # moet nog meer bij
+    def __init__(self, dim, N, dt):
         self.dim = dim  # grootte in (x, y)
         self.N = N
         self.dt = dt
