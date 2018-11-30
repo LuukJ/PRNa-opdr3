@@ -7,8 +7,6 @@ class Tafel:
         self.dim = dim  # grootte in (x, y)
         self.N = N
         self.dt = dt
-        self.balls = []
-        self.collisions = []
         # Gaten in een tuple maakt aanpassing of uitbreiding makkelijker
         self.holes = (  # gaten in de vorm (x, y, x-grootte, y-grootte)
                 (0,0,0.065,0.065),  # linksonder
@@ -18,6 +16,11 @@ class Tafel:
                 (dim[0]-0.065, 0, 0.065, 0.065),  # rechtsonder
                 (dim[0]-0.065, dim[1]-0.065, 0.065, 0.065)  # rechtsboven
             )
+        self.clear()
+
+    def clear(self):
+        self.balls = []
+        self.collisions = []
 
 
     def register_ball(self, pos, v_init, colour=(0,1,0,1)):
